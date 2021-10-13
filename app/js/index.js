@@ -44,12 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
         handleEl.addEventListener('mousedown', () => {
             dragging = true
         });
+        handleEl.addEventListener('touchstart', () => {
+            dragging = true
+        });
         window.addEventListener('mouseup', () => {
+            dragging = false
+        });
+        window.addEventListener('touchend', () => {
             dragging = false
         });
         window.addEventListener('mousemove', (event) => {
             if (dragging) {
                 move(event.clientX)
+            }
+        });
+        window.addEventListener('touchmove', (event) => {
+            if (dragging) {
+                move(event.touches[0].clientX)
             }
         });
     }
@@ -62,8 +73,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', imgResize)
     imgResize();
     initEvents();
-
-
-
 })
 
