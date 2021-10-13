@@ -1,4 +1,4 @@
-Photo gallery with API
+Image slider
 
 training with: https://www.udemy.com/course/zaawansowane-projekty-w-css-i-javascript/
 
