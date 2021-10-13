@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const img1Container = document.querySelector('.slider__image-container--first');
     const img2Container = document.querySelector('.slider__image-container--second');
     let dragging = false;
-    let imgContainerLeftOffset = imgContainer.offsetLeft;
+    let imgContainerLeftOffset;
+    let imgContainerWidth;
     const handleEl = document.querySelector('.slider__handle');
     const dividerEl = document.querySelector('.slider__divider');
-    let imgContainerWidth = imgContainer.offsetWidth;
 
     function getOffset(clientX) {
         const offset = clientX - imgContainerLeftOffset;
@@ -40,24 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
         dividerEl.style.left = `${percent}%`;
         img2Container.style.width = `${percent}%`;
     }
-
     function initEvents() {
-        window.addEventListener('mousedown', () => {
+        handleEl.addEventListener('mousedown', () => {
             dragging = true
-            console.log(dragging);
         });
         window.addEventListener('mouseup', () => {
             dragging = false
-            console.log(dragging);
         });
         window.addEventListener('mousemove', (event) => {
             if (dragging) {
-
                 move(event.clientX)
             }
         });
     }
-
     function imgResize() { //imgs scaling on small screen
         imgContainerWidth = imgContainer.offsetWidth;
         imgContainerLeftOffset = imgContainer.offsetLeft;
